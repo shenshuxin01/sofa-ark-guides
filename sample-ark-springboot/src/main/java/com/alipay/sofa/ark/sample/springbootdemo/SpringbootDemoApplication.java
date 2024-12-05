@@ -16,8 +16,12 @@
  */
 package com.alipay.sofa.ark.sample.springbootdemo;
 
+import com.alipay.sofa.ark.sample.SampleClassNotExported;
+import com.alipay.sofa.ark.sample.common.SampleClassExported;
+import com.alipay.sofa.ark.sample.facade.SampleService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ImportResource;
 
 /**
@@ -31,6 +35,13 @@ import org.springframework.context.annotation.ImportResource;
 public class SpringbootDemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringbootDemoApplication.class, args);
+        System.setProperty("sofa.ark.embed.enable","false");
+        ConfigurableApplicationContext app = SpringApplication.run(SpringbootDemoApplication.class,
+            args);
+        SampleService bean = app.getBean(SampleService.class);
+        String service = bean.service();
+        System.out.println("service:" + service);
+        SampleClassExported.hello();
+        SampleClassNotExported.hello();
     }
 }

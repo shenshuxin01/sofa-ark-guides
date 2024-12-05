@@ -17,6 +17,8 @@
         <spring.boot.version>2.1.0.RELEASE</spring.boot.version>
         <sofa.ark.version>2.2.12</sofa.ark.version>
         <project.encoding>UTF-8</project.encoding>
+<!--    todo ssx    下面的根据具体代码安装位置改动-->
+        <project.root.dir>D:\appdata\sofa-ark-fork</project.root.dir>
     </properties>
 
 
@@ -110,7 +112,7 @@
                 </executions>
                 <configuration>
                     <quiet>true</quiet>
-                    <header>${user.dir}/HEADER</header>
+                    <header>${project.root.dir}/HEADER</header>
                     <includes>
                         <include>**/src/main/java/**</include>
                         <include>**/src/test/java/**</include>
@@ -133,7 +135,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <configFile>${user.dir}/Formatter.xml</configFile>
+                    <configFile>${project.root.dir}/Formatter.xml</configFile>
                     <encoding>${project.encoding}</encoding>
                 </configuration>
             </plugin>
