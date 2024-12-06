@@ -3,143 +3,28 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.0</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
-    <groupId>com.alipay.sofa</groupId>
-    <artifactId>sofa-ark-guides</artifactId>
-    <packaging>pom</packaging>
+    <groupId>org.example</groupId>
+    <artifactId>mina-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>sample-ark-plugin</module>
-        <module>sample-ark-springboot</module>
-    </modules>
+    <packaging>pom</packaging>
 
     <properties>
-        <spring.boot.version>2.1.0.RELEASE</spring.boot.version>
-        <sofa.ark.version>2.2.12</sofa.ark.version>
-        <project.encoding>UTF-8</project.encoding>
-<!--    todo ssx    下面的根据具体代码安装位置改动-->
-        <project.root.dir>D:\appdata\sofa-ark-fork</project.root.dir>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-
-    <dependencyManagement>
-        <dependencies>
-
-            <!--SOFAArk modules-->
-            <dependency>
-                <groupId>com.alipay.sofa</groupId>
-                <artifactId>sofa-ark-spi</artifactId>
-                <version>${sofa.ark.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alipay.sofa</groupId>
-                <artifactId>sofa-ark-springboot-starter</artifactId>
-                <version>${sofa.ark.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alipay.sofa</groupId>
-                <artifactId>web-ark-plugin</artifactId>
-                <version>${sofa.ark.version}</version>
-            </dependency>
-
-            <!--sample projects-->
-            <dependency>
-                <groupId>com.alipay.sofa</groupId>
-                <artifactId>sample-ark-plugin</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alipay.sofa</groupId>
-                <artifactId>sample-ark-plugin-common</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!--spring boot-->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-        </dependencies>
-    </dependencyManagement>
-
-    <profiles>
-        <profile>
-            <id>default</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <repositories>
-                <repository>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-                    <id>ark-snapshot</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-                    <id>ark-snapshot</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>
-    </profiles>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>remove</goal>
-                            <goal>format</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <quiet>true</quiet>
-                    <header>${project.root.dir}/HEADER</header>
-                    <includes>
-                        <include>**/src/main/java/**</include>
-                        <include>**/src/test/java/**</include>
-                    </includes>
-                    <strictCheck>true</strictCheck>
-                    <mapping>
-                        <java>SLASHSTAR_STYLE</java>
-                    </mapping>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>com.googlecode.maven-java-formatter-plugin</groupId>
-                <artifactId>maven-java-formatter-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>format</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <configFile>${project.root.dir}/Formatter.xml</configFile>
-                    <encoding>${project.encoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <modules>
+        <module>mina-v1-demo</module>
+        <module>mina-v2-demo</module>
+        <module>start-demo</module>
+    </modules>
 
 </project>
