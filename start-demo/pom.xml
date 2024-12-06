@@ -39,14 +39,61 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>com.alipay.sofa</groupId>
+			<artifactId>sofa-ark-springboot-starter</artifactId> <!-- spring boot 宿主应用的必要依赖-->
+			<version>${sofa.ark.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alipay.sofa</groupId>
+			<artifactId>sofa-ark-all</artifactId>
+			<version>${sofa.ark.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alipay.sofa</groupId>
+			<artifactId>sofa-ark-api</artifactId>
+			<version>${sofa.ark.version}</version>
+		</dependency>
+
+<!--		另外，由于本宿主应用样例使用单 host 模式，因此需要添加 web-ark-plugin 依赖。配置如下：-->
+		<dependency>
+			<groupId>com.alipay.sofa</groupId>
+			<artifactId>web-ark-plugin</artifactId>
+			<version>${sofa.ark.version}</version>
+		</dependency>
+
+
+
 
 	</dependencies>
+
+<!--	<build>-->
+<!--		<plugins>-->
+<!--			<plugin>-->
+<!--				<groupId>org.springframework.boot</groupId>-->
+<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--			</plugin>-->
+<!--		</plugins>-->
+<!--	</build>-->
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+
+				<configuration>
+					<outputDirectory>target</outputDirectory> <!-- 生成的 可执行 Jar 包所在目录-->
+					<classifier>ark-biz</classifier> <!-- 可执行 Jar 包的后缀-->
+				</configuration>
+				<executions>
+					<execution>
+						<id>package</id>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

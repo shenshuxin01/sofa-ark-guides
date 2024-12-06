@@ -9,7 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StartDemoApplication {
 
+	/**
+	 * 项目启动的时候，mina的包只导入了mina-core-1.1.5.jar 另一个版本的被忽略了
+	 * @param args
+	 */
 	public static void main(String[] args) {
+		System.setProperty("sofa.ark.embed.enable","true");
 		SpringApplication.run(StartDemoApplication.class, args);
 	}
 

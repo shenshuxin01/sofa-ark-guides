@@ -20,4 +20,36 @@
 
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.alipay.sofa</groupId>
+                <artifactId>sofa-ark-maven-plugin</artifactId>
+                <version>${sofa.ark.version}</version> <!-- 建议使用最新版本-->
+                <executions>
+                    <execution>
+                        <id>default-cli</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skipArkExecutable>true</skipArkExecutable> <!-- 不生成可执行 fat jar-->
+                    <outputDirectory>./target</outputDirectory> <!-- 生成的 Ark Biz 所在目录-->
+                    <bizName>mina-v2-demo-ark-biz</bizName> <!-- Ark Biz 名字-->
+                    <!-- webContextPath 是单 host 模式下的必要配置，详细配置见 5. 多 host 模式与单 host 模式 -->
+                    <webContextPath>mina-v2-biz</webContextPath>  <!-- 同一个host中设置不同的webContextPath-->
+                    <!-- declaredMode 开启后，业务应用可以使用自己声明过的、且宿主应用拥有的通用依赖-->
+                    <declaredMode>true</declaredMode> <!-- 使用宿主应用的通用依赖-->
+                </configuration>
+            </plugin>
+            <!--  此处不使用 spring boot 应用的原有构建依赖-->
+            <!--      <plugin>-->
+            <!--        <groupId>org.springframework.boot</groupId>-->
+            <!--        <artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--      </plugin>-->
+        </plugins>
+    </build>
+
 </project>

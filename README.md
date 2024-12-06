@@ -1,6 +1,5 @@
 # SOFAArk 工程用例 
 
-SOFAArk 提供了两个样例工程来演示 `Ark Plugin` 和 `Ark 包` 的使用；样例工程目录组织如下：
 
 ```
 .
@@ -24,5 +23,7 @@ IDE 里启动是请带上如下参数：
 -Dsofa.ark.embed.enable=true
 ```
 
-jdk使用17
+jdk使用21
 maven使用3.9
+
+https://www.sofastack.tech/projects/sofa-boot/sofa-ark-spring-boot-demo/
